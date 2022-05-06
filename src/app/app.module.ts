@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 // Registro da localização da nossa aplicação para o uso de pipes
 registerLocaleData(localePt);
@@ -28,7 +29,8 @@ registerLocaleData(localePt);
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CurrencyMaskModule
   ],
   providers: [{provide: LOCALE_ID, useValue:'pt-BR'}],
   bootstrap: [AppComponent]
