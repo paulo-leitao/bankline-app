@@ -18,32 +18,23 @@
                     </div>
                     <div class="col-3">
                         <div class="d-grid gap-2 d-md-flex ">
-                            <button class="btn btn-primary me-md-2" type="button" (click)="save()" >Gravar</button>
+                            <button class="btn btn-primary me-md-2" type="button" (click)="save()" (click)="open(content)">Gravar</button>
+                            <ng-template #content class="bg-color-2" let-c="close" let-d="dismiss">
+                                <div class="modal-header">
+                                  <h4 class="modal-title text-light" id="modal-basic-title">Conta criada com sucesso!</h4>
+                                  <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="d('Cross click')"></button>
+                                </div>
+                                <div class="modal-body text-light">
+                                  <p>Atualize a página para exibir o novo correntista!</p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-outline-light" (click)="c('Save click')" onClick="window.location.reload();">Atualizar</button>
+                                </div>
+                            </ng-template>
                         </div>
                     </div>
                 </div>
             </div>
-              
-            <!-- <table class="table table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">CPF</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Conta</th>
-                        <th scope="col">Saldo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of correntista; index as i" >
-                        <th scope="row">{{ i + 1 }}</th>
-                        <td>{{ item.cpf }}</td>
-                        <td>{{ item.nome }}</td>
-                        <td>{{ item.conta.numero }}</td>
-                        <td>{{ item.conta.saldo | currency:"BRL" }}</td>
-                    </tr>
-                </tbody>
-            </table> -->
             <div class="row g-0">
                 <div class="card text-white bg-color border-secondary col-1 m-2" *ngFor="let item of correntista; index as i" style="width: 12rem;" >
                     <div class="card-header">{{ item.conta.numero }}</div>
@@ -51,7 +42,9 @@
                         <!-- <th scope="row">{{ i + 1 }}</th> -->
                         <h6 class="card-title">{{ item.nome }}</h6>
                         <p class="card-text">{{ item.cpf | cPF}}</p>
-                        <p class="card-text">{{ item.conta.saldo | currency:"BRL" }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <h6 class="card-text">{{ item.conta.saldo | currency:"BRL" }}</h6>
                     </div>
                 </div>
             </div>

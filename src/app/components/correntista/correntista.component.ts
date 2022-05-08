@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { inject } from '@angular/core/testing';
 import { CorrentistaService } from 'src/app/services/correntista.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-correntista',
   templateUrl: './correntista.component.html',
-  styleUrls: ['./correntista.component.css']
+  styleUrls: ['./correntista.component.css'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class CorrentistaComponent implements OnInit {
   correntista: any;
@@ -13,12 +15,17 @@ export class CorrentistaComponent implements OnInit {
 
   cpf:any;
   nome:any;
+  
   public isCollapsed = true;
 
 
   constructor(
+    config: NgbModalConfig, private modalService: NgbModal,
     private correntistaService: CorrentistaService
-  ) { }
+  ) { 
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit(): void {
     this.listCorrentista();
@@ -56,5 +63,9 @@ export class CorrentistaComponent implements OnInit {
     } else {
       console.log(correntista);
     }
+  }
+  
+  open(content: any) {
+    this.modalService.open(content);
   }
 }
