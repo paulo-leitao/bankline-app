@@ -16,4 +16,8 @@ export class CorrentistaService {
     return this.http.get(`${baseUrl}/correntista`);
   }
 
+  create(correntista:any): Observable<any> {
+    return this.http.post(`${baseUrl}/correntista`, correntista)
+  }
+
 }

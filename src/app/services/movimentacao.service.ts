@@ -18,6 +18,11 @@ export class MovimentacaoService {
   list(): Observable<any> {
     return this.http.get(`${baseUrl}/movimentacao`);
   }
+
+  // Método de requisição com filtro por IdConta
+  findByIdConta(idConta:any): Observable<any> {
+    return this.http.get(`${baseUrl}/movimentacao/${idConta}`)
+  }
   
   // Método de inclusão post via api
   create(movimentacao:any): Observable<any> {

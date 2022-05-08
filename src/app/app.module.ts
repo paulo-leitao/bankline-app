@@ -14,6 +14,9 @@ import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import { NgxMaskModule } from "ngx-mask";
+import { CorrentistaComponent } from './components/correntista/correntista.component';
+import { CPFPipe } from './cpf.pipe';
 
 // Registro da localização da nossa aplicação para o uso de pipes
 registerLocaleData(localePt);
@@ -22,7 +25,9 @@ registerLocaleData(localePt);
   declarations: [
     AppComponent,
     MovimentacaoListComponent,
-    MovimentacaoNewComponent
+    MovimentacaoNewComponent,
+    CorrentistaComponent,
+    CPFPipe
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,8 @@ registerLocaleData(localePt);
     NgbModule,
     FormsModule,
     HttpClientModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [{provide: LOCALE_ID, useValue:'pt-BR'}],
   bootstrap: [AppComponent]

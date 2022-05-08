@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-6">Correntistas</h1>
+        <p class="lead-1">Lista de Correntista</p>
+        <hr class="my-2">
+        <div>
+            <p>
+                <button id="cadastro" class="btn btn-outline-light btn-sm" type="button" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">Novo Correntista</button>
+                <!-- <a routerLink="/movimentacoes" class="btn btn-outline-danger btn-sm">Voltar</a> -->
+            </p>
+            <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                <div class="row g-2 pb-3">
+                    <div class="col-md-3">
+                      <input  class="form-control" id="iCpf" [(ngModel)]="cpf" placeholder="CPF" mask="000.000.000-00">
+                    </div>
+                    <div class="col-5">
+                        <input type="text"  class="form-control" id="iNome" [(ngModel)]="nome" placeholder="Nome do Correntista">
+                    </div>
+                    <div class="col-3">
+                        <div class="d-grid gap-2 d-md-flex ">
+                            <button class="btn btn-primary me-md-2" type="button" (click)="save()" >Gravar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              
+            <!-- <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Conta</th>
+                        <th scope="col">Saldo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of correntista; index as i" >
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ item.cpf }}</td>
+                        <td>{{ item.nome }}</td>
+                        <td>{{ item.conta.numero }}</td>
+                        <td>{{ item.conta.saldo | currency:"BRL" }}</td>
+                    </tr>
+                </tbody>
+            </table> -->
+            <div class="row g-0">
+                <div class="card text-white bg-color border-secondary col-1 m-2" *ngFor="let item of correntista; index as i" style="width: 12rem;" >
+                    <div class="card-header">{{ item.conta.numero }}</div>
+                    <div class="card-body">
+                        <!-- <th scope="row">{{ i + 1 }}</th> -->
+                        <h6 class="card-title">{{ item.nome }}</h6>
+                        <p class="card-text">{{ item.cpf | cPF}}</p>
+                        <p class="card-text">{{ item.conta.saldo | currency:"BRL" }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
