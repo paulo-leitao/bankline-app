@@ -32,6 +32,9 @@ Exemplo de uso como mascara de CPF:
 
 <span>{{ cpf | mask: '000.000.000-00' }}</span>
 ```
+O repositório original do APP pode ser encontrado [neste link](https://github.com/digitalinnovationone/santander-dev-week-bankline-app).
+
+
 [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.[^1]
 
 
