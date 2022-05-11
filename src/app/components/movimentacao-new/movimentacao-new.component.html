@@ -1,7 +1,6 @@
 <div class="container">
   <div class="jumbotron">
-    <h1 class="display-6">Movimentação</h1>
-    <p class="lead-1">Inclusão de uma nova movimentação</p>
+    <h1 class="display-6">Nova Movimentação</h1>
     <hr class="my-2">
 
     <div class="pb-3">
@@ -12,7 +11,7 @@
       <div class="col-md-9">
         <label for="iCorrentista" class="form-label">Correntista</label>
         <select id="iCorrentista" [(ngModel)]="correntistaSelec" class="form-select">
-          <option *ngFor="let c of correntista" [ngValue]="c">{{c.cpf}}-{{c.nome}}</option>
+          <option *ngFor="let c of correntista" [ngValue]="c">{{c.cpf | mask:'000.000.000-00'}} - {{c.nome}}</option>
         </select>
       </div>
       <div class="col-12">
